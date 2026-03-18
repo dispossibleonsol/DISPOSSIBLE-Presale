@@ -3,28 +3,43 @@
 <head>
   <title>DISPOSSIBLE Presale</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
   <script src="config.js"></script>
   <script src="app.js" defer></script>
 </head>
+
 <body>
+
+<div class="overlay">
+
   <header>
-    <img src="https://raw.githubusercontent.com/dispossibleonsol/dispossible-assets/main/DISPOSSIBLE_MASTER_1024.png" alt="DISPOSSIBLE Logo" width="120">
-    <h1>DISPOSSIBLE Presale</h1>
+    <img src="https://raw.githubusercontent.com/dispossibleonsol/dispossible-assets/main/DISPOSSIBLE_MASTER_1024.png" class="logo">
+    <h1>DISPOSSIBLE</h1>
+    <p class="tagline">Impossible? I don’t think so.</p>
   </header>
 
-  <section id="wallet-section">
-    <button onclick="connectWallet()">Connect Wallet</button>
-    <p id="status"></p>
-  </section>
+  <div class="card">
 
-  <section id="presale-section">
-    <h2>Buy Tokens</h2>
-    <button onclick="buyTokens()">Buy Tokens</button>
-    <div id="progress-container">
+    <h2>🔥 PRESALE LIVE 🔥</h2>
+
+    <p id="timer">Loading timer...</p>
+
+    <div class="stats">
+      <p><b>Price:</b> 1 SOL = 1,000,000 DSP</p>
+      <p><b>Total Supply:</b> 1,000,000,000</p>
+      <p id="raised">0 SOL raised</p>
+    </div>
+
+    <div class="progress-container">
       <div id="progress-bar"></div>
     </div>
+
+    <button class="buy-btn" onclick="buyTokens()">🚀 BUY NOW</button>
+
     <ul id="buyer-list"></ul>
-  </section>
+
+  </div>
+
+</div>
+
 </body>
 </html>
