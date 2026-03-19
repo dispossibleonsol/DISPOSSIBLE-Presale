@@ -1,32 +1,54 @@
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
+let provider;
+let publicKey;
+let connection;
 
-let totalSol = 0;
+window.onload = () => {
+  connection = new solanaWeb3.Connection(CONFIG.rpcUrl, "confirmed");
+};
 
-function buyTokens() {
-  totalSol += Math.random() * 0.5;
+// 🔗 CONNECT WALLET
+async function connectWallet() {
+  provider = window.solana;
 
-  document.getElementById("raised").innerText =
-    totalSol.toFixed(2) + " SOL raised";
-
-  document.getElementById("progress-bar").style.width =
-    (totalSol / 10 * 100) + "%";
-}
-
-// countdown timer
-setInterval(() => {
-  const end = new Date("2026-04-01").getTime();
-  const now = new Date().getTime();
-  const diff = end - now;
-
-  if (diff <= 0) {
-    document.getElementById("timer").innerText = "Ended";
+  if (!provider) {
+    alert("Install Phantom Wallet!");
     return;
   }
 
-  const h = Math.floor(diff / (1000 * 60 * 60));
-  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const resp = await provider.connect();
+  publicKey = resp.publicKey;
 
-  document.getElementById("timer").innerText = h + "h " + m + "m left";
-}, 1000);
+  document.getElementById("wallet").innerText =
+    "Connected: " + publicKey.toString();
+}
+
+// 💰 BUY TOKENS (REAL SOL TRANSFER)
+async function buyTokens() {
+
+  if (!provider) {
+    alert("Connect wallet first!");
+    return;
+  }
+
+  const amount = 0.1; // SOL amount
+  const lamports = amount * solanaWeb3.LAMPORTS_PER_SOL;
+
+  const transaction = new solanaWeb3.Transaction().add(
+    solanaWeb3.SystemProgram.transfer({
+      fromPubkey: publicKey,
+      toPubkey: new solanaWeb3.PublicKey(CONFIG.presaleWallet),
+      lamports
+    })
+  );
+
+  try {
+    const signature = await provider.signAndSendTransaction(transaction);
+    await connection.confirmTransaction(signature);
+
+    alert("✅ Purchase successful!");
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Transaction failed");
+  }
+}
