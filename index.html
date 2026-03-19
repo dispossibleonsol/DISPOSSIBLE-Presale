@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DISPOSSIBLE Presale</title>
+  <title>DISPOSSIBLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="config.js"></script>
   <script src="app.js" defer></script>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
 </head>
 
 <body>
 
-<div class="overlay">
+<!-- NAVBAR -->
+<nav>
+  <h2>DSP</h2>
+  <div class="nav-links">
+    <a href="#presale">Presale</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#airdrop">Airdrop</a>
+    <a href="#whitepaper">Docs</a>
+  </div>
+</nav>
 
-  <header>
-    <img src="https://raw.githubusercontent.com/dispossibleonsol/dispossible-assets/main/DISPOSSIBLE_MASTER_1024.png" class="logo">
-    <h1>DISPOSSIBLE</h1>
-    <p class="tagline">Impossible? I don’t think so.</p>
-  </header>
+<!-- HERO -->
+<section class="hero">
+  <h1>DISPOSSIBLE</h1>
+  <p>Impossible? Not anymore.</p>
+  <button onclick="scrollToSection('presale')">🚀 Buy Now</button>
+</section>
 
-  <div class="card">
+<!-- PRESALE -->
+<section id="presale" class="card">
+  <h2>🔥 Presale Live</h2>
+  <p id="timer"></p>
+  <p id="raised">0 SOL raised</p>
 
-    <h2>🔥 PRESALE LIVE 🔥</h2>
-
-    <p id="timer">Loading timer...</p>
-
-    <div class="stats">
-      <p><b>Price:</b> 1 SOL = 1,000,000 DSP</p>
-      <p><b>Total Supply:</b> 1,000,000,000</p>
-      <p id="raised">0 SOL raised</p>
-    </div>
-
-    <div class="progress-container">
-      <div id="progress-bar"></div>
-    </div>
-
-    <button class="buy-btn" onclick="buyTokens()">🚀 BUY NOW</button>
-
-    <ul id="buyer-list"></ul>
-
+  <div class="progress">
+    <div id="progress-bar"></div>
   </div>
 
-</div>
+  <button onclick="buyTokens()">BUY NOW</button>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <h2>📊 Tokenomics</h2>
+  <div class="grid">
+    <div>Presale<br>50%</div>
+    <div>Liquidity<br>30%</div>
+    <div>Marketing<br>20%</div>
+  </div>
+</section>
+
+<!-- AIRDROP -->
+<section id="airdrop" class="card">
+  <h2>🎁 Airdrop Tasks</h2>
+  <ul>
+    <li>Follow on X</li>
+    <li>Join Telegram</li>
+    <li>Retweet</li>
+  </ul>
+  <button>Submit Tasks</button>
+</section>
+
+<!-- WHITEPAPER -->
+<section id="whitepaper">
+  <h2>📄 Whitepaper</h2>
+  <p>DISPOSSIBLE is a next-gen meme token designed to break limits...</p>
+</section>
+
+<footer>
+  <p>© 2026 DISPOSSIBLE</p>
+</footer>
 
 </body>
 </html>
