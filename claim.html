@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DISPOSSIBLE Claim</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Claim DISPOSSIBLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
   <script src="config.js"></script>
-  <script src="app.js" defer></script>
+  <script src="claim.js" defer></script>
 </head>
-<body>
-  <header>
-    <img src="https://raw.githubusercontent.com/dispossibleonsol/dispossible-assets/main/DISPOSSIBLE_MASTER_1024.png" alt="DISPOSSIBLE Logo" width="120">
-    <h1>Claim Your Tokens</h1>
-  </header>
 
-  <section id="claim-section">
-    <button onclick="claim()">Claim Tokens</button>
-    <p id="result"></p>
-  </section>
+<body style="background:black;color:white;text-align:center;padding:40px;">
+
+  <h1>🎁 Claim Your Tokens</h1>
+
+  <button onclick="connectWallet()">Connect Wallet</button>
+  <p id="wallet"></p>
+
+  <h3 id="eligible">Check eligibility</h3>
+
+  <button onclick="checkClaim()">Check Claim</button>
+  <button onclick="claimTokens()">Claim Tokens</button>
+
+  <p id="result"></p>
+
 </body>
 </html>
